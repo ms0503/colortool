@@ -131,7 +131,7 @@ fn hsl2rgb(hsl: Hsl) -> Rgb {
     } else {
         2.55f32 * (hsl.l as f32 - (100u8 - hsl.l) as f32 * (hsl.s as f32 / 100f32))
     };
-    return match hsl.h {
+    match hsl.h {
         0..60 => Rgb {
             r: max as u8,
             g: ((hsl.h as f32 / 60f32) * (max - min) + min) as u8,
@@ -163,13 +163,13 @@ fn hsl2rgb(hsl: Hsl) -> Rgb {
             b: (((360i16 - hsl.h) as f32 / 60f32) * (max - min) + min) as u8
         },
         _ => unreachable!()
-    };
+    }
 }
 
 fn rgb2hsl(rgb: Rgb) -> Hsl {
     let max = rgb.r.max(rgb.g.max(rgb.b));
     let min = rgb.r.min(rgb.g.min(rgb.b));
-    return Hsl {
+    Hsl {
         h: if max == min {
             0i16
         } else {
@@ -192,7 +192,7 @@ fn rgb2hsl(rgb: Rgb) -> Hsl {
             ((max - min) as f32 / (510u16 - max as u16 - min as u16) as f32 * 100f32) as u8
         },
         l: ((max + min) as f32 / 2f32 / 255f32 * 100f32) as u8
-    };
+    }
 }
 
 #[derive(Clone, Copy, Debug, Eq, Ord, PartialEq, PartialOrd)]
