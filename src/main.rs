@@ -58,19 +58,19 @@ fn main() {
                 process::exit(1);
             } else {
                 let h = opts.args[0].parse::<i16>();
-                if let Err(_) = h {
+                if h.is_err() {
                     eprintln!("Error: {} is invalid degree.", opts.args[0]);
                     process::exit(1);
                 }
                 let h = h.unwrap();
                 let s = opts.args[1].parse::<u8>();
-                if let Err(_) = s {
+                if s.is_err() {
                     eprintln!("Error: {} is invalid percentage.", opts.args[1]);
                     process::exit(1);
                 }
                 let s = s.unwrap();
                 let l = opts.args[2].parse::<u8>();
-                if let Err(_) = l {
+                if l.is_err() {
                     eprintln!("Error: {} is invalid percentage.", opts.args[2]);
                     process::exit(1);
                 }
@@ -90,19 +90,19 @@ fn main() {
                 process::exit(1);
             } else {
                 let r = u8::from_str_radix(&opts.args[0], 16);
-                if let Err(_) = r {
+                if r.is_err() {
                     eprintln!("Error: {} is invalid color hex.", opts.args[0]);
                     process::exit(1);
                 }
                 let r = r.unwrap();
                 let g = u8::from_str_radix(&opts.args[1], 16);
-                if let Err(_) = g {
+                if g.is_err() {
                     eprintln!("Error: {} is invalid color hex.", opts.args[1]);
                     process::exit(1);
                 }
                 let g = g.unwrap();
                 let b = u8::from_str_radix(&opts.args[2], 16);
-                if let Err(_) = b {
+                if b.is_err() {
                     eprintln!("Error: {} is invalid color hex.", opts.args[2]);
                     process::exit(1);
                 }
